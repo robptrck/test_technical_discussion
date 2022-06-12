@@ -8,3 +8,5 @@ This is a technical discussion demo.
 * bullet 2
 
 regular text
+
+This is a good example of [my code](https://gist.github.com/robptrck/ff4b3b4bbdb1ff52dbc750a0e8168ac6)
