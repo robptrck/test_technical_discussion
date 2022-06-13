@@ -20,9 +20,8 @@ Test inputting table
 |0|Real Madrid|Spain|2019|53|
 |1|Barcelona|Spain|2019|47|
 
+### Average goal by team
 ```
-# Average goal by team
-
 conn = sqlite3.connect('test.db')
 
 cursor = conn.execute(''' SELECT team,
@@ -35,10 +34,8 @@ for row in cursor:
 ```
 
 ---
-### Steps to create table, import data and make a query
+### Create the table
 ```
-# Create the table
-
 import sqlite3
 
 conn = sqlite3.connect('test.db') '''
@@ -48,18 +45,18 @@ CREATE TABLE IF NOT EXISTS team_data(team text,
                       country text, 
                       season integer, 
                       total_goals integer);''')
-
-# Insert data
-
+```
+### Insert data
+```
 conn.execute("INSERT INTO team_data VALUES('Real Madrid', 'Spain', 2019, 53);")
 conn.execute("INSERT INTO team_data VALUES('Barcelona', 'Spain', 2019, 47);")
 conn.execute("INSERT INTO team_data VALUES('Arsenal', 'UK', 2019, 52);")
 conn.execute("INSERT INTO team_data VALUES('Real Madrid', 'Spain', 2018, 49);")
 conn.execute("INSERT INTO team_data VALUES('Barcelona', 'Spain', 2018, 45);")
 conn.execute("INSERT INTO team_data VALUES('Arsenal', 'UK', 2018, 50 );")
-
-# Average goal by team
-
+```
+### Average goal by team
+```
 conn = sqlite3.connect('test.db')
 
 cursor = conn.execute(''' SELECT team,
@@ -69,17 +66,23 @@ cursor = conn.execute(''' SELECT team,
 
 for row in cursor:
   print(row)
-  
-# select team data
+```
+INSERT RESULTS HERE
 
+
+### select team data
+```
 cursor = conn.execute('''Select *
                          From team_data''')
 
 for row in cursor:
   print(row)
+```
+INSERT RESULTS HERE
 
-# create df
 
+### create df
+```
 import pandas as pd
 
 df = pd.read_sql_query("SELECT * FROM team_data", conn)
