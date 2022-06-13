@@ -7,32 +7,11 @@ This is a technical discussion demo.
 * bullet 1
 * bullet 2
 
-regular text
+regular text<br>
+text on a new line
 
-This is a good example of [my code](https://gist.github.com/robptrck/ff4b3b4bbdb1ff52dbc750a0e816)
-
-Code for writing SQL queries inside Python using sqlite3 and pandas [my code](https://gist.github.com/robptrck/4aed3cef8c8b49e4f5454f78954c7597)
-
-Test inputting table
-
-|index|team|country|season|total\_goals|
-|---|---|---|---|---|
-|0|Real Madrid|Spain|2019|53|
-|1|Barcelona|Spain|2019|47|
-
-### Average goal by team
-```
-conn = sqlite3.connect('test.db')
-
-cursor = conn.execute(''' SELECT team,
-                            AVG(total_goals) AS avg_goals
-                          FROM team_data
-                          GROUP BY team;''')
-
-for row in cursor:
-  print(row)
-```
-
+---
+### Writing SQL queries inside Python using sqlite3 and pandas ([full code here](https://gist.github.com/robptrck/4aed3cef8c8b49e4f5454f78954c7597))
 ---
 ### Create the table
 ```
@@ -67,7 +46,9 @@ cursor = conn.execute(''' SELECT team,
 for row in cursor:
   print(row)
 ```
-INSERT RESULTS HERE
+('Arsenal', 51.0)<br>
+('Barcelona', 46.0)<br>
+('Real Madrid', 51.0)
 
 
 ### select team data
@@ -78,7 +59,18 @@ cursor = conn.execute('''Select *
 for row in cursor:
   print(row)
 ```
-INSERT RESULTS HERE
+('Real Madrid', 'Spain', 2019, 53)<br>
+('Barcelona', 'Spain', 2019, 47)<br>
+('Arsenal', 'UK', 2019, 52)<br>
+('Real Madrid', 'Spain', 2018, 49)<br>
+('Barcelona', 'Spain', 2018, 45)<br>
+('Arsenal', 'UK', 2018, 50)<br>
+('Real Madrid', 'Spain', 2019, 53)<br>
+('Barcelona', 'Spain', 2019, 47)<br>
+('Arsenal', 'UK', 2019, 52)<br>
+('Real Madrid', 'Spain', 2018, 49)<br>
+('Barcelona', 'Spain', 2018, 45)<br>
+('Arsenal', 'UK', 2018, 50)
 
 
 ### create df
@@ -102,3 +94,12 @@ df
 |9|Real Madrid|Spain|2018|49|
 |10|Barcelona|Spain|2018|45|
 |11|Arsenal|UK|2018|50|
+
+### make another SQL query
+```
+pd.read_sql_query('select * from team_data limit 2', conn)
+```
+|index|team|country|season|total\_goals|<br>
+|---|---|---|---|---|<br>
+|0|Real Madrid|Spain|2019|53|<br>
+|1|Barcelona|Spain|2019|47|<br>
