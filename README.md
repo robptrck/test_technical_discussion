@@ -99,7 +99,7 @@ df
 ```
 pd.read_sql_query('select * from team_data limit 2', conn)
 ```
-|index|team|country|season|total\_goals|<br>
-|---|---|---|---|---|<br>
-|0|Real Madrid|Spain|2019|53|<br>
-|1|Barcelona|Spain|2019|47|<br>
+|index|team|country|season|total\_goals|
+|---|---|---|---|---|
+|0|Real Madrid|Spain|2019|53|
+|1|Barcelona|Spain|2019|47|
